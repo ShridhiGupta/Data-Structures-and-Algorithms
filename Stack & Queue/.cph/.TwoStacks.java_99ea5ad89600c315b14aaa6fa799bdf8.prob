@@ -1,0 +1,1 @@
+{"name":"Local: TwoStacks","url":"d:\\Internship\\DSA\\Stack & Queue\\TwoStacks.java","tests":[{"id":1751695540261,"input":"1\n5 4 10\n4 2 4 6 1\n2 1 8 5","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Internship\\DSA\\Stack & Queue\\TwoStacks.java","group":"local","local":true}

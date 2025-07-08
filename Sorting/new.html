@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishabh Jain - Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        *{
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .name-3d {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            text-shadow:1px 1px 0 #2c3e50, 2px 2px 0 #2c3e50, 3px 3px 0 #2c3e50, 
+                        4px 4px 0 #2c3e50, 5px 5px 0 #2c3e50, 6px 6px 0 #2c3e50, 
+                        7px 7px 0 #2c3e50, 8px 8px 0 #2c3e50;
+             position: relative;
+        }
+        .name-3d:hover {
+            color: #3498db;
+            text-shadow:1px 1px 0 #1abc9c, 2px 2px 0 #1abc9c, 3px 3px 0 #1abc9c, 
+                        4px 4px 0 #1abc9c, 5px 5px 0 #1abc9c, 6px 6px 0 #1abc9c, 
+                        7px 7px 0 #1abc9c, 8px 8px 0 #1abc9c;
+        }
+        
+        body {
+            background: #f0f2f5;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Cartoon-style background elements */
+        .background-element {
+            position: fixed;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .code-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 592px;
+            height: 882px;
+            background: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            transform: scale(0.5);
+           ;
+
+
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+        }
+
+        .motivational-quote {
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .social-link.linkedin:hover { color: #0077b5; }
+        .social-link.github:hover { color: #333; }
+        .social-link.instagram:hover { color: #e4405f; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(52,152,219,0.2), rgba(46,204,113,0.2));
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover::before {
+            top: 0;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Popup Animation */
+        @keyframes popup {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .popup {
+            animation: popup 0.5s ease-out forwards;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Matrix-style code rain effect */
+        .code-symbol {
+            position: absolute;
+            color: #0f0;
+            font-family: monospace;
+            font-size: 14px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="code-rain"></div>
+    <div class="container">
+        <header class="header floating">
+            <h1>Rishabh Jain</h1>
+            <p>AI & ML Engineer in Making 🚀</p>
+        </header>
+
+        <div class="motivational-quote floating">
+            "Code like nobody's watching, debug like everyone is! 💻✨"
+        </div>
+
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="">
+
+            </div>
+            <div class="profile-info">
+                <div class="section">
+                    <h2>About Me</h2>
+                    <p>Aspiring AI/ML engineer with a passion for turning coffee into code and dreams into algorithms. Currently exploring the fascinating world of artificial intelligence while occasionally debugging my life choices! 🤖</p>
+                    <div class="motivational-quote">
+                        "In the world of AI, every bug is just an opportunity to learn something new! 🌟"
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="motivational-quote floating">
+            "Turning caffeine into code and dreams into algorithms! ☕️→💻"
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <h3>TEERTHANKAR MAHAVEER UNIVERSITY</h3>
+            <p>B.Tech in Artificial Intelligence, Machine Learning and Deep Learning</p>
+            <p>Aug 2023 - Aug 2027</p>
+            <p>Delhi Road, NH9, Moradabad, Uttar Pradesh 244001</p>
+            <p>GPA: 7.5</p>
+            <div class="motivational-quote">
+                "Each semester is a new opportunity to level up! 🎮"
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item popup">
+                    <h4>Programming Languages</h4>
+                    <p>C++, Python, Java, SQL, C</p>
+                </div>
+                <div class="skill-item popup">
+                    <h4>Libraries/Frameworks</h4>
+                    <p>Django, Flask, React.js, Javascript, Express.js, Fast API</p>
+                </div>
+                <div class="skill-item popup">
+                    <h4>Tools / Platforms</h4>
+                    <p>Git, VS Code</p>
+                </div>
+                <div class="skill-item popup">
+                    <h4>Databases</h4>
+                    <p>Oracle, MySQL, SQL, MongoDB</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="motivational-quote floating">
+            "Every line of code is a step toward mastery! 🎯"
+        </div>
+
+        <div class="section">
+            <h2>Certifications & Achievements</h2>
+            <ul>
+                <li>Accenture North America - Project Management Job Simulation</li>
+                <li>Goldman Sachs - Software Engineering Job Simulation</li>
+                <li>Artificial Intelligence Fundamentals - IBM</li>
+                <li>Career Essentials in Generative AI by Microsoft and LinkedIn</li>
+            </ul>
+            <div class="motivational-quote">
+                "Collecting certificates and building dreams, one achievement at a time! 🏆"
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Leadership & Experience</h2>
+            <p>• Team Leader - Smart India Hackathon</p>
+            <p>• Team Leader - EY Techathon</p>
+            <p>• Currently working on TBO Hackathon</p>
+            <div class="motivational-quote">
+                "Leading with code, inspiring with innovation! 🚀"
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Connect With Me</h2>
+            <div class="section">
+               
+                <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                    <div class="card">
+                        <div class="background">
+                        </div>
+                        <div class="logo">
+                            Socials
+                        </div>
+                        <a href="https://www.instagram.com/rishh.hehe/"><div class="box box1"><span class="icon"><svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" class="svg">
+                                <path d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z" />
+                            </svg></span></div></a>
+                        <a href="https://www.linkedin.com/in/rishabh-jain2005/"><div class="box box2"> <span class="icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="svg">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </span></div></a>
+                        <a href="https://github.com/Rishh2005"><div class="box box3"><span class="icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="svg">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </span></div></a>
+                        <div class="box box4"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+            .card {
+              position: relative;
+              width: 100%;
+              height: 150px;
+              background: lightgrey;
+              border-radius: 20px;
+              overflow: hidden;
+              box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+              transition: all 1s ease-in-out;
+              border: 2px solid rgb(255, 255, 255);
+              max-width: 800px;
+            }
+            
+            .background {
+              position: absolute;
+              inset: 0;
+              background-color: #4158D0;
+              background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            }
+            
+            .logo {
+              position: absolute;
+              right: 50%;
+              bottom: 50%;
+              transform: translate(50%, 50%);
+              transition: all 0.4s ease-in-out;
+              font-size: 2em;
+              font-weight: 600;
+              color: #ffffff;
+              letter-spacing: 3px;
+            }
+            
+            .icon {
+              display: inline-block;
+              width: 30px;
+              height: 30px;
+            }
+            
+            .icon .svg {
+              fill: rgba(255, 255, 255, 0.797);
+              width: 100%;
+              transition: all 0.5s ease-in-out;
+            }
+            
+            .box {
+              position: absolute;
+              padding: 15px;
+              text-align: right;
+              background: rgba(255, 255, 255, 0.389);
+              border-top: 2px solid rgb(255, 255, 255);
+              border-right: 1px solid white;
+              border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
+              box-shadow: rgba(100, 100, 111, 0.364) -7px 7px 29px 0px;
+              transform-origin: bottom left;
+              transition: all 1s ease-in-out;
+            }
+            
+            .box::before {
+              content: "";
+              position: absolute;
+              inset: 0;
+              border-radius: inherit;
+              opacity: 0;
+              transition: all 0.5s ease-in-out;
+            }
+            
+            .box:hover .svg {
+              fill: white;
+            }
+            
+            .box1 {
+              width: 70%;
+              height: 90%;
+              bottom: -90%;
+              left: -70%;
+            }
+            
+            .box1::before {
+              background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #ff53d4 60%, #62c2fe 90%);
+            }
+            
+            .box1:hover::before {
+              opacity: 1;
+            }
+            
+            .box1:hover .icon .svg {
+              filter: drop-shadow(0 0 5px white);
+            }
+            
+            .box2 {
+              width: 50%;
+              height: 90%;
+              bottom: -90%;
+              left: -50%;
+              transition-delay: 0.2s;
+            }
+            
+            .box2::before {
+              background: radial-gradient(circle at 30% 107%, #91e9ff 0%, #0077b5 90%);
+            }
+            
+            .box2:hover::before {
+              opacity: 1;
+            }
+            
+            .box2:hover .icon .svg {
+              filter: drop-shadow(0 0 5px white);
+            }
+            
+            .box3 {
+              width: 30%;
+              height: 90%;
+              bottom: -90%;
+              left: -30%;
+              transition-delay: 0.4s;
+            }
+            
+            .box3::before {
+              background: radial-gradient(circle at 30% 107%, #333 0%, #24292e 90%);
+            }
+            
+            .box3:hover::before {
+              opacity: 1;
+            }
+            
+            .box3:hover .icon .svg {
+              filter: drop-shadow(0 0 5px white);
+            }
+            
+            .box4 {
+              width: 10%;
+              height: 90%;
+              bottom: -90%;
+              left: -10%;
+              transition-delay: 0.6s;
+            }
+            
+            .card:hover {
+              transform: scale(1.02);
+            }
+            
+            .card:hover .box {
+              bottom: -1px;
+              left: -1px;
+            }
+            
+            .card:hover .logo {
+              transform: translate(270%, -52px);
+              letter-spacing: 0px;
+            }
+            </style>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        // GSAP Animations
+        gsap.from(".name-3d", {
+            duration: 1,
+            scale: 0.8,
+            y: -30,
+            opacity: 0,
+            ease: "bounce.out"
+        });
+
+        gsap.from(".section", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "power2.out"
+        });
+
+        gsap.from(".skill-item", {
+            duration: 0.8,
+            scale: 0.5,
+            opacity: 0,
+            stagger: 0.1,
+            ease: "back.out(1.7)"
+        });
+
+        // Matrix-style code rain effect
+        function createCodeRain() {
+            const symbols = "01";
+            const container = document.querySelector('.code-rain');
+            
+            function createSymbol() {
+                const symbol = document.createElement('div');
+                symbol.className = 'code-symbol';
+                symbol.style.left = Math.random() * 100 + 'vw';
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                container.appendChild(symbol);
+
+                gsap.to(symbol, {
+                    duration: 2 + Math.random() * 3,
+                    y: '100vh',
+                    opacity: 0.5,
+                    ease: 'none',
+                    onComplete: () => {
+                        container.removeChild(symbol);
+                    }
+                });
+            }
+
+            setInterval(createSymbol, 100);
+        }
+
+        createCodeRain();
+
+        // Popup animation for sections on scroll
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('popup');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>

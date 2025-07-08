@@ -32,7 +32,7 @@ You’ll find:
 
 ## 🛠️ Technologies Used
 
-- **Languages**: C++, Java, Python
+- **Languages**: Java
 - **Tools**: Git, GitHub, VS Code
 
 ---

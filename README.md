@@ -22,6 +22,7 @@ This repository is organized topic-wise for easy navigation:
 - 🧱 **Stack & Queue**
 - 📃 **Strings**
 - 🌳 **Trees**
+- 🌳**Trie**
 
 You’ll find:
 - ✅ Solved problems

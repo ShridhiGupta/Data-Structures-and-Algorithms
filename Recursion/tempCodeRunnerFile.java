@@ -1,0 +1,1 @@
+pathRestriction("", maze, 0, 0);

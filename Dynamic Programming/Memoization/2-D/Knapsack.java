@@ -1,4 +1,4 @@
-public class Knapsack_Memoization {
+public class Knapsack {
     int[][] memo;
 
     public int knapsack(int W, int[] val, int[] wt) {
@@ -37,7 +37,7 @@ public class Knapsack_Memoization {
         int[] values = {10, 15, 40, 50, 40, 30};
         int capacity = 7;
 
-        Knapsack_Memoization ks = new Knapsack_Memoization();
+        Knapsack ks = new Knapsack();
         int maxValue = ks.knapsack(capacity, values, weights);
         System.out.println("Maximum value in Knapsack = " + maxValue);                                                                  
     }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-class MaxHeap {
+public class MaxHeap {
     List<Integer> heap;
     public MaxHeap(){
         heap = new ArrayList<Integer>();

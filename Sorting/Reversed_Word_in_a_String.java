@@ -1,3 +1,7 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
 public class Reversed_Word_in_a_String{
     public static void main(String[] args) {
         String shree = "the sky is blue";
